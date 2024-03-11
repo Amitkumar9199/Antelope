@@ -63,6 +63,11 @@ RUN chmod +x /home/entrypoint.sh
 # CMD ["/bin/bash"]
 CMD ["/home/entrypoint.sh"]
 
+# Compile and run
 # sudo docker build -t bcc-docker .
 # sudo docker run -it --privileged  bcc-docker
-# 
+
+# delete images
+# sudo docker rmi -f $(sudo docker images -q)
+# sudo docker system prune -a
+# sudo docker images
