@@ -112,18 +112,28 @@ ip netns exec $h2_id ip route add default via 192.168.11.1 dev eth0
 ip netns exec $h3_id ip route add default via 192.168.13.1 dev eth0
 ip netns exec $h4_id ip route add default via 192.168.14.1 dev eth0
 
+# add a route to the router for the 192.168.10.1/24 network
+ip netns exec $s1_id ip route add 192.168.10.2 via 192.168.10.1 dev eth0
+ip netns exec $s1_id ip route add 192.168.11.2 via 192.168.11.1 dev eth1
+
+ip netns exec $s2_id ip route add 192.168.13.2 via 192.168.13.1 dev eth0
+ip netns exec $s2_id ip route add 192.168.14.2 via 192.168.14.1 dev eth1
+
+ip netns exec $s1_id ip route add default via 192.168.12.2 dev eth2
+ip netns exec $s2_id ip route add default via 192.168.12.1 dev eth2
+
 ip netns exec $s1_id sysctl -w net.ipv4.ip_forward=1
 ip netns exec $s2_id sysctl -w net.ipv4.ip_forward=1
 
-# # Cleanup
+sysctl -w net.ipv4.ip_forward=1
+
+# test the connection using the following command
+# docker exec -it h1 ping -c 4 192.168.11.1
+
+# Cleanup
 # docker stop h1 h2 h3 h4 s1 s2
 # docker rm h1 h2 h3 h4 s1 s2
 
-# # Clean up the Network namespaces links
-# rm -rf /var/run/netns/$h1_id
-# rm -rf /var/run/netns/$h2_id
-# rm -rf /var/run/netns/$h3_id
-# rm -rf /var/run/netns/$h4_id
-# rm -rf /var/run/netns/$s1_id
-# rm -rf /var/run/netns/$s2_id
+# Clean up the Network namespaces links
+# rm -rf /var/run/netns/
 
