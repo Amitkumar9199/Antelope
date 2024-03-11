@@ -1,0 +1,88 @@
+version: '3'
+
+services:
+  h1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IMAGE_NAME: bcc-docker
+    container_name: h1
+    privileged: true
+    volumes:
+      - ./hello_world.py:/home/hello_world.py
+      - ./hello.py:/home/hello.py
+    command: /home/entrypoint.sh
+
+  h2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IMAGE_NAME: bcc-docker
+    container_name: h2
+    privileged: true
+    volumes:
+      - ./hello_world.py:/home/hello_world.py
+      - ./hello.py:/home/hello.py
+    command: /home/entrypoint.sh
+
+  h3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IMAGE_NAME: bcc-docker
+    container_name: h3
+    privileged: true
+    volumes:
+      - ./hello_world.py:/home/hello_world.py
+      - ./hello.py:/home/hello.py
+    command: /home/entrypoint.sh
+
+  h4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IMAGE_NAME: bcc-docker
+    container_name: h4
+    privileged: true
+    volumes:
+      - ./hello_world.py:/home/hello_world.py
+      - ./hello.py:/home/hello.py
+    command: /home/entrypoint.sh
+
+  s1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IMAGE_NAME: bcc-docker
+    container_name: s1
+    privileged: true
+    volumes:
+      - ./hello_world.py:/home/hello_world.py
+      - ./hello.py:/home/hello.py
+    command: /home/entrypoint.sh
+
+  s2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IMAGE_NAME: bcc-docker
+    container_name: s2
+    privileged: true
+    volumes:
+      - ./hello_world.py:/home/hello_world.py
+      - ./hello.py:/home/hello.py
+    command: /home/entrypoint.sh
+
+
+# sudo docker-compose build
+# sudo docker-compose up
+
+# sudo docker rmi -f $(sudo docker images -q)
+# sudo docker system prune -a
+# sudo docker images
