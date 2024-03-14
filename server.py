@@ -8,10 +8,12 @@ def generate_random_data(length):
 
 def server(host, port):
     # print the absolute ip address of the server
-    print(socket.gethostbyname(socket.gethostname()))
+    # print(socket.gethostbyname(socket.gethostname()))
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
+        # print("hi")
         server_socket.bind((host, port))
+        # print("Bye")
         server_socket.listen(1)
         print(f"Server listening on {host}:{port}")
         connection, address = server_socket.accept()
