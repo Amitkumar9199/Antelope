@@ -56,6 +56,9 @@ ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 COPY entrypoint.sh /home/entrypoint.sh
 COPY hello_world.py /home/hello_world.py
 COPY hello.py /home/hello.py
+# COPY GIT/Antelope/ /home/GIT/Antelope/
+COPY server.py /home/server.py
+COPY client.py /home/client.py
 
 RUN chmod +x /home/entrypoint.sh
 
