@@ -11,6 +11,8 @@ RUN apt-get update && \
 
 RUN apt-get install -y wget nano tree iputils-ping iproute2 net-tools 
 
+RUN apt-get install -y openssh-server openssh-client
+
 RUN apt-get install -y linux-headers-$(uname -r)
 
 RUN apt-get install -y sudo file

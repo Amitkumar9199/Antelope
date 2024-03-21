@@ -130,6 +130,47 @@ sysctl -w net.ipv4.ip_forward=1
 # test the connection using the following command
 # docker exec -it h1 ping -c 4 192.168.11.1
 
+# Install OpenSSH server
+# ip netns exec $h1_id apt-get update
+# ip netns exec $h1_id apt-get install -y openssh-server
+
+# Install OpenSSH server in h1
+# docker exec -it h1 apt-get update
+# docker exec -it h1 apt-get install -y openssh-server
+
+# Create the SFTP user's directory and set proper ownership
+docker exec -it h1 mkdir -p /home/sftpuser
+docker exec -it h1 useradd -d /home/sftpuser -s /usr/sbin/nologin sftpuser
+docker exec -it h1 chown sftpuser:sftpuser /home/sftpuser
+
+# Set a password for the sftpuser (you will be prompted to enter the password)
+docker exec -it h1 passwd sftpuser
+
+# if sshd_config file exists, rename it to sshd_config.old
+docker exec -it h1 bash -c "mv /etc/ssh/sshd_config /etc/ssh/sshd_config.old"
+
+# if sshd_config file does not exist, create it
+docker exec -it h1 bash -c "touch /etc/ssh/sshd_config"
+
+# Configure SSHD for SFTP
+docker exec -it h1 bash -c "echo 'Subsystem sftp internal-sftp' >> /etc/ssh/sshd_config"
+docker exec -it h1 bash -c "echo 'Match User sftpuser' >> /etc/ssh/sshd_config"
+docker exec -it h1 bash -c "echo 'ChrootDirectory /home/sftpuser' >> /etc/ssh/sshd_config"
+docker exec -it h1 bash -c "echo 'ForceCommand internal-sftp' >> /etc/ssh/sshd_config"
+docker exec -it h1 bash -c "echo 'AllowTcpForwarding no' >> /etc/ssh/sshd_config"
+docker exec -it h1 bash -c "echo 'X11Forwarding no' >> /etc/ssh/sshd_config"
+
+# Restart SSH service to apply changes
+docker exec -it h1 service ssh restart
+
+
+# Example command to use SFTP from h2 to connect to h1
+# Replace 'your_password' with the actual password of the sftpuser
+docker exec -it h2 sftp sftpuser@192.168.10.2
+
+# ./sftp_server_setup.sh $h1_id
+# ./sftp_client_connect.sh $h2_id 192.168.10.2 sftpuser
+
 # Cleanup
 # docker stop h1 h2 h3 h4 s1 s2
 # docker rm h1 h2 h3 h4 s1 s2
