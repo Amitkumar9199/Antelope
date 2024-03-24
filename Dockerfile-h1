@@ -11,7 +11,7 @@ RUN apt-get update && \
 
 RUN apt-get install -y wget nano tree iputils-ping iproute2 net-tools 
 
-RUN apt-get install -y openssh-server openssh-client
+RUN apt-get install -y openssh-server openssh-client sshpass
 
 RUN apt-get install -y linux-headers-$(uname -r)
 
@@ -63,6 +63,8 @@ COPY server.py /home/server.py
 COPY client.py /home/client.py
 
 RUN chmod +x /home/entrypoint.sh
+
+RUN apt-get install -y netcat
 
 # Default command
 # CMD ["/bin/bash"]
