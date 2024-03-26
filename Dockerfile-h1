@@ -13,7 +13,7 @@ RUN apt-get install -y wget nano tree iputils-ping iproute2 net-tools
 
 RUN apt-get install -y openssh-server openssh-client sshpass
 
-RUN apt-get install -y linux-headers-$(uname -r)
+# RUN apt-get install -y linux-headers-$(uname -r)
 
 RUN apt-get install -y sudo file
 
@@ -45,11 +45,18 @@ ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 COPY entrypoint.sh /home/entrypoint.sh
 COPY hello_world.py /home/hello_world.py
 COPY hello.py /home/hello.py
-COPY Antelope/ /home/GIT/Antelope/
+COPY Antelope/  /home/GIT/Antelope/
 
 RUN chmod +x /home/entrypoint.sh
 
 RUN apt-get install -y netcat
+
+RUN apt-get install -y clang
+
+# RUN apt-get install -y linux-headers-generic
+
+RUN apt-get install -y linux-headers-5.15.0-100 linux-headers-5.15.0-101 linux-headers-5.15.0-101-generic
+
 
 # Default command
 # CMD ["/bin/bash"]
