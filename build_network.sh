@@ -133,11 +133,14 @@ sysctl -w net.ipv4.ip_forward=1
 # test the connection using the following command
 # docker exec -it h1 ping -c 4 192.168.11.1
 
+# to open container in interactive mode
+#  docker exec -it h1 bash
+
 # In the sender container
-# tar czf - /path/to/your/file | ncat -l -p <port> --send-only
+# cat /path/to/your/file | nc -w 3 192.168.13.2 12345
 
 # In the receiver container
-# ncat <sender_ip> <sender_port> --recv-only | tar xzf -
+# nc -l -p 12345 > received_file
 
 # Cleanup
 # docker stop h1 h2 h3 h4 s1 s2
