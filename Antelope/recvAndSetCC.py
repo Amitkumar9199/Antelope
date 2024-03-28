@@ -343,7 +343,9 @@ class OnlineServer:
             trainDataCCMap[int(data['predictCC'])].append(termTrainData)
         for cc in trainDataCCMap.keys():
             if (trainDataCCMap[cc].__len__() > 0):
-                fileName = "/usr/src/python/traindata/"+ccNameMap[cc]+"_output.txt"
+                # path = "/usr/src/python/traindata/"
+                path = "./models/"
+                fileName = path+ccNameMap[cc]+"_output.txt"
                 self.writeData(fileName, trainDataCCMap[cc])
         print("write end " + str(delKeys))
         for key in delKeys:
