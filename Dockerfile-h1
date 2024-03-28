@@ -64,7 +64,7 @@ RUN apt-get install -y netcat
 
 RUN apt-get install -y clang
 
-RUN apt-get install -y linux-headers-$(uname -r)
+# RUN apt-get install -y linux-headers-$(uname -r)
 
 RUN ln -s /usr/include/x86_64-linux-gnu/asm /usr/include/asm
 RUN ln -s /usr/include/x86_64-linux-gnu/gnu /usr/include/gnu
