@@ -26,13 +26,15 @@ maxPactingRate = 4294967295
 
 ccNameMap = {0: "bbr",
              1: "cubic",
-             2: "westwood"}
+             2: "westwood",
+             3: "reno"}
 
 ## path="./traindata/models/"
 path="./traindata/"
 ccFileMap = {0: path + "bbr.pickle",
              1: path + "cubic.pickle",
-             2: path + "westwood.pickle"
+             2: path + "westwood.pickle",
+             3: path + "reno.pickle"
              }
 pickleMap = {}
 
