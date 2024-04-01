@@ -13,7 +13,7 @@ RUN apt-get install -y wget nano tree iputils-ping iproute2 net-tools
 
 RUN apt-get install -y openssh-server openssh-client sshpass
 
-# RUN apt-get install -y linux-headers-$(uname -r)
+RUN apt-get install -y linux-headers-$(uname -r)
 
 RUN apt-get install -y sudo file
 
@@ -66,12 +66,13 @@ RUN apt-get install -y clang
 
 RUN apt-get install -y linux-headers-$(uname -r)
 
+# removinf linking erros
 RUN ln -s /usr/include/x86_64-linux-gnu/asm /usr/include/asm
 RUN ln -s /usr/include/x86_64-linux-gnu/gnu /usr/include/gnu
 RUN ln -s /usr/include/x86_64-linux-gnu/sys /usr/include/sys
 RUN ln -s /usr/include/x86_64-linux-gnu/bits /usr/include/bits  
 
-# RUN cp stubs-64.h stubs-32.h
+# RUN cp stubs-64.h stubs-32.h (linking error)
 RUN cp /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/gnu/stubs-32.h
 
 RUN apt-get install -y libbpf-dev libc6-dev
@@ -92,7 +93,7 @@ CMD ["/home/entrypoint.sh"]
 # Compile , run , stop containers
 # sudo docker build -t bcc-docker .
 # sudo docker run -it --privileged  bcc-docker
-# sudo docker ps -q | xargs sudo docker stop
+# sudo docker ps -aq | xargs sudo docker stop
 
 
 # delete images ,erase data , show images
