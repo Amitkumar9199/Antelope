@@ -53,6 +53,8 @@ RUN chmod +x /home/entrypoint.sh
 
 RUN apt-get install -y netcat
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tshark
+
 # Default command
 # CMD ["/bin/bash"]
 CMD ["/home/entrypoint.sh"]

@@ -1,0 +1,33 @@
+File name:           capture_reno_h2.pcap
+File type:           Wireshark/... - pcapng
+File encapsulation:  Ethernet
+File timestamp precision:  nanoseconds (9)
+Packet size limit:   file hdr: (not set)
+Number of packets:   67 k
+File size:           2084 MB
+Data size:           2082 MB
+Capture duration:    8.174312100 seconds
+First packet time:   2024-04-01 07:21:25.260697615
+Last packet time:    2024-04-01 07:21:33.435009715
+Data byte rate:      254 MBps
+Data bit rate:       2038 Mbps
+Average packet size: 30661.32 bytes
+Average packet rate: 8308 packets/s
+SHA256:              c98b6a963b4f47e0c6d94dfe484be47200c6dea05541409455d5511dfb4d7226
+RIPEMD160:           ba8ae125f6b1f53b85e2e78c785bf126db6cf6f2
+SHA1:                cf87fc13d9aaa9ecd6a5d993280d2bed3231a6de
+Strict time order:   False
+Capture hardware:    AMD Ryzen 5 5600H with Radeon Graphics (with SSE4.2)
+Capture oper-sys:    Linux 6.5.0-26-generic
+Capture application: Dumpcap (Wireshark) 3.6.2 (Git v3.6.2 packaged as 3.6.2-2)
+Number of interfaces in file: 1
+Interface #0 info:
+                     Name = eth1
+                     Encapsulation = Ethernet (1 - ether)
+                     Capture length = 262144
+                     Time precision = nanoseconds (9)
+                     Time ticks per second = 1000000000
+                     Time resolution = 0x09
+                     Operating system = Linux 6.5.0-26-generic
+                     Number of stat entries = 1
+                     Number of packets = 67918
