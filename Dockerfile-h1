@@ -77,6 +77,8 @@ RUN cp /usr/include/x86_64-linux-gnu/gnu/stubs-64.h /usr/include/gnu/stubs-32.h
 
 RUN apt-get install -y libbpf-dev libc6-dev
 
+COPY small_file.txt /home/out.txt
+
 # Search for bpf_sock_ops and look for an enum containing BPF_SOCK_OPS_ACTIVE_ESTABLISHED_CB (around line 5825) variable. Add the new enum variables as listed below.
 # change the bpf.h file resided in /usr/include/linux/bpf.h
 # add the follwing lines to the bpf.h file

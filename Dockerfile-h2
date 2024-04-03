@@ -53,6 +53,8 @@ RUN chmod +x /home/entrypoint.sh
 
 RUN apt-get install -y netcat
 
+COPY small_file.txt /home/out.txt
+
 # Default command
 # CMD ["/bin/bash"]
 CMD ["/home/entrypoint.sh"]
