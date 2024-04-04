@@ -13,3 +13,14 @@
 `hello.py` - file used by Dockerfile - BCC Hello_world program
 
 `hello_world.py` - file used by Dockerfile - BCC Hello_world program
+
+
+Setup:
+
+
+h1(192.168.10.2,eth0)     - (192.168.10.1,eth0)s1(eth2) - (eth2)s2(eth0,192.168.12.1) - (192.168.12.2,eth0)h3   
+
+h2(192.168.11.2,eth0)     - (192.168.11.1,eth1)s1(eth2) - (eth2)s2(eth1,192.168.13.1) - (192.168.13.2,eth0)h4
+
+h5(192.168.15.2,eth0)     - (192.168.15.1,eth3)s1(eth2) - (eth2)s2(eth3,192.168.16.1) -  (192.168.16.2,eth0)h6
+
