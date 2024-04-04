@@ -19,7 +19,7 @@ def write_data(file_path, data):
         for line in data:
             file.write(line + '\n')
 
-def plot_congestion_control(result):
+def plot_congestion_control(result,file_name):
     num_timestamps = len(result)
     timestamps = list(range(num_timestamps))
 
@@ -58,7 +58,7 @@ def plot_congestion_control(result):
     plt.xlabel('Timestamp')
     plt.ylabel('Congestion Control Algorithm')
     plt.title('Congestion Control Algorithm vs Timestamp')
-    plt.savefig('congestion_control.png')
+    plt.savefig(file_name+'.png')
     # plt.show()
 
 def main():
@@ -80,7 +80,7 @@ def main():
 
     print('Data parsed and stored successfully')
     #print(result)
-    plot_congestion_control(result)
+    plot_congestion_control(result,file_name)
     print('Plot generated successfully')
 
 
