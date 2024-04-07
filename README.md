@@ -1,3 +1,5 @@
+The main Antelope code is taken from https://github.com/antelopeproject/antelope
+
 `Dockerfile` - docker container with bcc support
 
 `docker-compose.yml` - Docker compose file
